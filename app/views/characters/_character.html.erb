@@ -24,8 +24,10 @@
     <%= character.hair %>
   </p>
 
-  <p>
-    <strong>Note:</strong>
-    <%= character.note %>
-  </p>
+  <%= character.notes.each do |note| %>
+    <p>
+      <strong><%= note.updated_at %>:</strong>
+      <%= note.body %>
+    </p>
+  <% end %>
 </div>
