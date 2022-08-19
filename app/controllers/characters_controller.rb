@@ -38,7 +38,7 @@ class CharactersController < ApplicationController
   # PATCH/PUT /characters/1 or /characters/1.json
   def update
     respond_to do |format|
-      if @character.update(crunched_params)
+      if @character.update(crunch_params(character_params))
         format.html { redirect_to character_url(@character), notice: "Character was successfully updated." }
         format.json { render :show, status: :ok, location: @character }
       else
@@ -71,20 +71,16 @@ class CharactersController < ApplicationController
 
     def crunch_params(params)
       params.each_pair do |k, v|
-        next unless %i[rocks gems hair].include? k
+        next unless %i[xp rocks gems hair].include? k.to_sym
 
         case v[0]
         when '+'
           params[k] = @character.send(k) + v[1..].to_i
         when '-'
-          params[k] = @character.send(k) + v[1..].to_i
+          params[k] = @character.send(k) - v[1..].to_i
         else
           next
         end
       end
     end
-
-    def crunched_params
-      crunch_params(character_params)
-    end 
 end
