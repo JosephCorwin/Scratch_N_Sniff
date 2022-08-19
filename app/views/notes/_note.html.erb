@@ -1,12 +1,15 @@
 <div id="<%= dom_id note %>">
   <p>
-    <strong>Body:</strong>
+    <strong>Charcter:</strong>
+    <%= note.character.name %>
+  </p>
+  <p>
+    <strong>Note:</strong>
     <%= note.body %>
   </p>
 
   <p>
-    <strong>Character:</strong>
-    <%= note.character_id %>
+    <strong>Created On</strong>
+    <%= note.created_at.to_date %>
   </p>
-
 </div>

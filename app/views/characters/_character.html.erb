@@ -1,8 +1,5 @@
 <div id="<%= dom_id character %>">
-  <p>
-    <strong>Name:</strong>
-    <%= character.name %>
-  </p>
+  <h2><%= character.name %></h2>
 
   <p>
     <strong>Xp:</strong>
@@ -24,9 +21,10 @@
     <%= character.hair %>
   </p>
 
-  <%= character.notes.each do |note| %>
+  <h3>Notes</h3>
+  <% character.notes.each do |note| %>
     <p>
-      <strong><%= note.updated_at %>:</strong>
+      <strong><%= note.updated_at.to_date %>:</strong>
       <%= note.body %>
     </p>
   <% end %>
